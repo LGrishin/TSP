@@ -22,10 +22,6 @@ static std::string lable_bot = " </g>\n";
 static constexpr Latitude   lat0 = M_PI / 2;
 static constexpr Longitude  long0 = 0;
 
-Point::Point(double x, double y) : x_(x), y_(y) {}
-double Point::getX() const { return x_; }
-double Point::getY() const { return y_; }
-
 Point SVG::getCleanProjection(const Location& location) const
 {
     const Latitude    lat1 = location.getLatitude() * (M_PI / 180);
@@ -125,11 +121,12 @@ void SVG::renderRegion(OStream& ostream, const Region& region) const
 
 void SVG::renderWay(OStream& ostream, const Way& way) const
 {
-    auto cities = way.getCities();
-    for (size_t i = 0; i < cities.size(); ++i)
+    auto arcs = way.getArcs();
+    for (size_t i = 0; i < arcs.size(); ++i)
     {
-        renderArc(ostream, {cities[i], cities[(i + 1) % cities.size()]}, false);
+        renderArc(ostream, arcs[i], false);
     }
+    auto cities = way.getCities();
     for (size_t i = 0; i < cities.size(); i++)
     {
         renderCity(ostream, cities[i]);

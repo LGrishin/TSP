@@ -17,6 +17,8 @@ class ApproximationSolver : public Solver
 {
 private:
     void dfs(const Graph& g, size_t curr, std::vector<bool>& visited);
+    bool checkIntersections(std::pair<size_t, size_t>&) const;
+    void optimize();
 public:
     ApproximationSolver() = default;
     void solve() override;

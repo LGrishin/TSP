@@ -6,16 +6,6 @@
 namespace core
 {
 
-class Point
-{
-public:
-    Point(double, double);
-    double getX() const;
-    double getY() const;
-private:
-    double x_, y_;
-};
-
 class SVG
 {
     using BBox = std::pair<Point, Point>;   //minx miny, maxx maxy

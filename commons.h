@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <cmath>
+
 namespace core
 {
 using Name = std::string;
@@ -28,5 +30,6 @@ using Filenames = std::vector<Filename>;
 using Distances = std::vector<Distance>;
 
 using Graph = std::vector<Distances>;
+
 
 }
